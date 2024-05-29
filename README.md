@@ -1,5 +1,5 @@
 # Microwave-Oven-Controller
-Inverfacing with Tiva C (TM4C123GH6PM)
+Interfacing with Tiva C (TM4C123GH6PM)
 
 *** PROJECT DESCRIPTION ***
 

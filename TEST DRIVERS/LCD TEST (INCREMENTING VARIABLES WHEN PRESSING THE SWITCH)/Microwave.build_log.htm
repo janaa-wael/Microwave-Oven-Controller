@@ -1,0 +1,64 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+D:\My Repos\TEST$$\Microwave-Oven-Controller\Microwave.uvproj
+Project File Date:  05/30/2024
+
+<h2>Output:</h2>
+Rebuild target 'Target 1'
+assembling startup_TM4C123.s...
+compiling system_TM4C123.c...
+compiling GPIO.c...
+MCAL\GPIO\GPIO.c(170): warning:  #186-D: pointless comparison of unsigned integer with zero
+        if(Copy_u8PortName >= 'A' && Copy_u8PortName <= 'F' && (Copy_u8PinId>=0 && Copy_u8PinId <= 7) && (Copy_u8PinDir == PIN_INPUT || Copy_u8PinDir == PIN_OUTPUT))
+MCAL\GPIO\GPIO.c(229): warning:  #186-D: pointless comparison of unsigned integer with zero
+        if(Copy_u8PortName >= 'A' && Copy_u8PortName <= 'F' && (Copy_u8PortValue >= 0 || Copy_u8PortValue <= 255))
+MCAL\GPIO\GPIO.c(269): warning:  #186-D: pointless comparison of unsigned integer with zero
+        if(Copy_u8PortName >= 'A' && Copy_u8PortName <= 'F' && (Copy_u8PinId>=0 && Copy_u8PinId <=7) && (Copy_u8PinValue == PIN_LOW || Copy_u8PinValue == PIN_HIGH))
+MCAL\GPIO\GPIO.c(328): warning:  #186-D: pointless comparison of unsigned integer with zero
+        if(Copy_u8PortName >= 'A' && Copy_u8PortName <= 'F' && (Copy_u8PinId>=0 && Copy_u8PinId<=7))
+MCAL\GPIO\GPIO.c: 4 warnings, 0 errors
+compiling SYSTICK.c...
+compiling KEYPAD.c...
+HAL\KEYPAD\KEYPAD.c(83): warning:  #1-D: last line of file ends without a newline
+  }*/
+HAL\KEYPAD\KEYPAD.c: 1 warning, 0 errors
+compiling LCD.c...
+compiling PUSH_BTN.c...
+HAL\PUSH_BTN\PUSH_BTN.h(11): warning:  #1295-D: Deprecated declaration PUSHBTN_INIT - give arg types
+  void PUSHBTN_INIT();
+HAL\PUSH_BTN\PUSH_BTN.h(12): warning:  #1295-D: Deprecated declaration PUSHBTN_u8ButtonPressed - give arg types
+  u8 PUSHBTN_u8ButtonPressed();
+HAL\PUSH_BTN\PUSH_BTN.c: 2 warnings, 0 errors
+compiling SWITCH.c...
+SWITCH.c(12): warning:  #1-D: last line of file ends without a newline
+  } */
+SWITCH.c: 1 warning, 0 errors
+compiling main.c...
+APP\../HAL/PUSH_BTN/PUSH_BTN.h(11): warning:  #1295-D: Deprecated declaration PUSHBTN_INIT - give arg types
+  void PUSHBTN_INIT();
+APP\../HAL/PUSH_BTN/PUSH_BTN.h(12): warning:  #1295-D: Deprecated declaration PUSHBTN_u8ButtonPressed - give arg types
+  u8 PUSHBTN_u8ButtonPressed();
+APP\main.c(45): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+                        sprintf(str1,"%f",y);
+APP\main.c(47): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *"
+                        LCD_voidSendString(str1);
+APP\main.c(50): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *restrict"
+                        sprintf(str2,"%f",z);
+APP\main.c(51): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "char *"
+                        LCD_voidSendString(str2);
+APP\main.c(25): warning:  #177-D: variable "reading" was declared but never referenced
+        u8 reading;
+APP\main.c(26): warning:  #177-D: variable "counter" was declared but never referenced
+        u8 counter=0;
+APP\main.c: 8 warnings, 0 errors
+linking...
+Program Size: Code=7516 RO-data=652 RW-data=60 ZI-data=516  
+".\Microwave.axf" - 0 Error(s), 16 Warning(s).
+Load "D:\\My Repos\\TEST$$\\Microwave-Oven-Controller\\Microwave.axf" 
+Connecting: Mode=JTAG, Speed=1000000Hz
+Erase Done.
+Programming Done.
+Verify OK.

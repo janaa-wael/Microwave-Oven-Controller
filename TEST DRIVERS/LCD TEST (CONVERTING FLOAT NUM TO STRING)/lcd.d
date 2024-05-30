@@ -1,0 +1,10 @@
+.\lcd.o: HAL\LCD\LCD.c
+.\lcd.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
+.\lcd.o: HAL\LCD\../../LIB/tm4c123gh6pm.h
+.\lcd.o: HAL\LCD\../../LIB/BIT_MATH.h
+.\lcd.o: HAL\LCD\../../LIB/STD_TYPES.h
+.\lcd.o: HAL\LCD\../../MCAL/GPIO/GPIO.h
+.\lcd.o: HAL\LCD\../../MCAL/SYSTICK/Systick.h
+.\lcd.o: HAL\LCD\../LCD/LCD.h
+.\lcd.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
+.\lcd.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h

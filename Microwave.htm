@@ -3,11 +3,11 @@
 <title>Static Call Graph - [.\Microwave.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Microwave.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Thu May 30 05:47:26 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Thu May 30 10:32:05 2024
 <BR><P>
-<H3>Maximum Stack Usage =         44 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =         36 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-main &rArr; LCD_voidSetCursor &rArr; LCD_SendCommand &rArr; GPIO_u8SetPinValue
+main &rArr; LCD_voidSendString &rArr; LCD_voidSendData &rArr; GPIO_u8SetPinValue
 <P>
 <H3>
 Mutually Recursive functions
@@ -1216,20 +1216,15 @@ Global Symbols
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_voidSendString
 </UL>
 
-<P><STRONG><a name="[8d]"></a>LCD_voidSetCursor</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, lcd.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = LCD_voidSetCursor &rArr; LCD_SendCommand &rArr; GPIO_u8SetPinValue
-</UL>
-<BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_SendCommand
+<P><STRONG><a name="[8d]"></a>LCD_voidSetCursor</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, lcd.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_SendCommand
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay
 </UL>
-<BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-</UL>
 
-<P><STRONG><a name="[76]"></a>main</STRONG> (Thumb, 170 bytes, Stack size 8 bytes, main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = main &rArr; LCD_voidSetCursor &rArr; LCD_SendCommand &rArr; GPIO_u8SetPinValue
+<P><STRONG><a name="[76]"></a>main</STRONG> (Thumb, 184 bytes, Stack size 8 bytes, main.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = main &rArr; LCD_voidSendString &rArr; LCD_voidSendData &rArr; GPIO_u8SetPinValue
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_voidSetCursor
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_voidSendString
+<BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_voidSendString
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_voidSendData
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_voidInit
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_SendCommand

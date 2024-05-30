@@ -9,13 +9,16 @@
 
 extern u8 GLOBAL_NUM_CHAR;
 u8 LCD_LINE;
+
+u8 arr[16] = {'1','2','3','4','5','6','7','8','9','A','B','C','D','*','#','\0'};
+
 int main()
 {
 	u8 reading;
-	u8 x='A';
+	u8 counter=0;
 	GPIO_INIT('F'); //
 	//GPIO_INIT('E'); // KEYPAD COLS
-	//GPIO_INIT('D'); // KEYPAD ROWS
+	GPIO_INIT('D'); // KEYPAD ROWS
 	GPIO_INIT('B'); // LCD DATA PORT
 	GPIO_INIT('A'); // LCD CONTROL PORT
 	//KEYPAD_voidInit();
@@ -26,12 +29,12 @@ int main()
 	LCD_voidSendString("Initializing");
 	delay(200);
 	LCD_SendCommand(LCD_CLEAR_CMND);
-	LCD_voidSetCursor(1,0);
-
-		while(x<='Z')
+	LCD_voidSendString("  ");
+	
+		while(arr[counter]!='\0')
 		{
-			LCD_voidSendData(x);
-			x++;
+			LCD_voidSendData(arr[counter]);
+			delay(100);
 			GLOBAL_NUM_CHAR++;
 			while(GLOBAL_NUM_CHAR>15 && GLOBAL_NUM_CHAR<40 && LCD_LINE!=1)
 			{
@@ -43,7 +46,8 @@ int main()
 				GLOBAL_NUM_CHAR++;
 			}
 			delay(1000);
-}
+			counter++;
+		}
 
 	
 	

@@ -19,7 +19,7 @@
  * Array of characters that stores the string to be printed on the LCD
  */
  
-
+u8 GLOBAL_NUM_CHAR;
 
 /* 
  * Description : 
@@ -37,11 +37,15 @@
 void LCD_voidInit()
 {
 	delay(300);
-	LCD_SendCommand(LCD_8_BIT_MODE_CMND);
+	LCD_SendCommand(LCD_FUNCTION_SET_CMND);
 	delay(1);
 	LCD_SendCommand(0x0F);
 	delay(2);
 	LCD_SendCommand(0x01);
+	delay(5);
+		LCD_SendCommand(LCD_ENTRY_MODE_SET_CMND);
+  delay(5);
+
 }
 
 
@@ -58,7 +62,6 @@ void LCD_SendCommand(char Data_Value)
 {
 	GPIO_u8SetPinValue(CTRL_PORT, LCD_RS_PIN, PIN_LOW);
 	GPIO_u8SetPinValue(CTRL_PORT, LCD_RW_PIN, PIN_LOW);
-	//Set_vPortValue(DATA_PORT, Data_Value);
 	GPIO_u8SetPinValue (DATA_PORT,	LCD_D0_PIN ,  READ_BIT(Data_Value,0)   );
 	GPIO_u8SetPinValue (DATA_PORT,	LCD_D1_PIN ,  READ_BIT(Data_Value,1)   );
 	GPIO_u8SetPinValue (DATA_PORT,	LCD_D2_PIN ,  READ_BIT(Data_Value,2)   );
@@ -88,7 +91,6 @@ void LCD_voidSendData(char character)
 	//char flag = 0;
 	GPIO_u8SetPinValue(CTRL_PORT, LCD_RS_PIN, PIN_HIGH);
 	GPIO_u8SetPinValue(CTRL_PORT, LCD_RW_PIN, PIN_LOW);
-	//Set_vPortValue(DATA_PORT, character);
 	GPIO_u8SetPinValue (DATA_PORT,	LCD_D0_PIN ,  READ_BIT(character,0)   );
 	GPIO_u8SetPinValue (DATA_PORT,	LCD_D1_PIN ,  READ_BIT(character,1)   );
 	GPIO_u8SetPinValue (DATA_PORT,	LCD_D2_PIN ,  READ_BIT(character,2)   );
@@ -100,7 +102,6 @@ void LCD_voidSendData(char character)
 	GPIO_u8SetPinValue(CTRL_PORT, LCD_EN_PIN, PIN_HIGH);
 	delay(2);
 	GPIO_u8SetPinValue(CTRL_PORT, LCD_EN_PIN, PIN_LOW);
-	//flag = (char)GPIO_PORTB_DATA_R;
 }
 
 
@@ -110,6 +111,7 @@ void LCD_voidSendData(char character)
  */
 void LCD_voidSendString(char *str)
 {
+	
 	while(*str)
 	{
 		LCD_voidSendData(*str);
@@ -117,7 +119,11 @@ void LCD_voidSendString(char *str)
 	}
 }
 
-
+void LCD_voidClearScreen(void)
+{
+			LCD_SendCommand(LCD_CLEAR_CMND);
+			GLOBAL_NUM_CHAR = 0;
+}
 /* 
  * Description : 
  * Converts the floating distance into a string and stores it in str_distance
@@ -127,6 +133,10 @@ void ConvertFloatToStr(f32 distance,char *str)
 	distance = sprintf(str, "Distance = %f", distance);
 }
 
+void LCD_voidJumpTo2ndLine(void)
+{
+	LCD_SendCommand(LCD_JUMP_TO_2ND_LINE_CMND);
+}
 
 /* 
  * Description : 
@@ -141,7 +151,36 @@ void Print_Distance_To_LCD(f32 distance)
 	LCD_voidSendString(str_distance);
 }
 
+void LCD_voidSetCursor(u8 row, u8 col)
+{
+    u8 address;
+		if (col >= 40)
+    {
+        col = 39;  // Clamp to maximum column value
+    }
+		
+		// Ensure row is within the valid range (0-1 for 2-line LCD)
+    if (row > 1)
+    {
+        row = 0;  // Default to the first row for invalid row values
+    }
+    switch (row)
+    {
+    case 0:
+        address = col;
+        break;
+    case 1:
+        address = col + 0x40;
+        break;
+    // Add cases for more rows if you have a larger LCD
+    default:
+        address = 0;
+        break;
+    }
 
+    LCD_SendCommand(0x80 | address);  // Set DDRAM address command
+		delay(1);
+}
 
 
 

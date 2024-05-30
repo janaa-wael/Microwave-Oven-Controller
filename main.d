@@ -6,3 +6,4 @@
 .\main.o: APP\../MCAL/SYSTICK/SYSTICK.h
 .\main.o: APP\../HAL/PUSH_BTN/PUSH_BTN.h
 .\main.o: APP\../HAL/KEYPAD/KEYPAD.h
+.\main.o: APP\../HAL/LCD/LCD.h

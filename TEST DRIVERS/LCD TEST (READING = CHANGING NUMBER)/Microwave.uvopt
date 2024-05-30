@@ -230,7 +230,7 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>232</TopLine>
+      <TopLine>233</TopLine>
       <CurrentLine>235</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\startup_TM4C123.s</PathWithFileName>
@@ -326,7 +326,7 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>317</TopLine>
+      <TopLine>318</TopLine>
       <CurrentLine>320</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\MCAL\GPIO\GPIO.c</PathWithFileName>
@@ -428,9 +428,9 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>7</ColumnNumber>
+      <ColumnNumber>8</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>97</TopLine>
+      <TopLine>98</TopLine>
       <CurrentLine>103</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\HAL\LCD\LCD.c</PathWithFileName>
@@ -502,7 +502,7 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>20</TopLine>
+      <TopLine>1</TopLine>
       <CurrentLine>35</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\APP\main.c</PathWithFileName>

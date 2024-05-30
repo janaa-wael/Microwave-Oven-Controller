@@ -49,16 +49,17 @@ int main()
 			LCD_voidSendString("Reading=");
 			sprintf(str2,"%f",z);
 			LCD_voidSendString(str2);
+
 			while(READ_BIT(GPIO_PORTF_DATA_R,0)==0) 
 			{
-				delay(100); // THIS DELAY IS DONE TO ENSURE THAT THE BUTTON IS RELEASED AFTER IT'S PRESSED, AFTER WHICH THE VALUES OF y & z ARE UPDATED. :)
+				delay(50); // THIS DELAY IS DONE TO ENSURE THAT THE BUTTON IS RELEASED AFTER IT'S PRESSED, AFTER WHICH THE VALUES OF y & z ARE UPDATED. :)
 				if(READ_BIT(GPIO_PORTF_DATA_R,0)==1)
 				{
 					y += 0.01;
 					z += 0.1;
 				}					
 			}
-			delay(1000);
+			delay(450);
 		}
 
 	

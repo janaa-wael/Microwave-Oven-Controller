@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\Microwave.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Microwave.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Sat Jun 01 12:11:59 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Sat Jun 01 15:38:01 2024
 <BR><P>
-<H3>Maximum Stack Usage =         52 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =         68 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 main &rArr; LCD_voidCountDown &rArr; LCD_voidSetCursor &rArr; LCD_SendCommand &rArr; GPIO_u8SetPinValue
 <P>
@@ -1150,8 +1150,7 @@ Global Symbols
 <P><STRONG><a name="[b7]"></a>Systick_Init</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, systick.o(.text), UNUSED)
 
 <P><STRONG><a name="[80]"></a>Systick_Wait</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, systick.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_sec
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay
+<BR><BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay
 </UL>
 
 <P><STRONG><a name="[7f]"></a>delay</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, systick.o(.text))
@@ -1164,12 +1163,13 @@ Global Symbols
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_voidInit
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_SendCommand
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KEYPAD_READ
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_sec
 </UL>
 
-<P><STRONG><a name="[81]"></a>delay_sec</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, systick.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = delay_sec
+<P><STRONG><a name="[81]"></a>delay_sec</STRONG> (Thumb, 24 bytes, Stack size 12 bytes, systick.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = delay_sec &rArr; delay
 </UL>
-<BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Systick_Wait
+<BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay
 </UL>
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_voidCountDown
@@ -1280,19 +1280,14 @@ Global Symbols
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_voidSendData
 </UL>
 
-<P><STRONG><a name="[95]"></a>LCD_voidCursorOff</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, lcd.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = LCD_voidCursorOff &rArr; LCD_SendCommand &rArr; GPIO_u8SetPinValue
-</UL>
-<BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_SendCommand
-</UL>
-<BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_voidCountDown
+<P><STRONG><a name="[95]"></a>LCD_voidCursorOff</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, lcd.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_SendCommand
 </UL>
 
-<P><STRONG><a name="[96]"></a>LCD_voidCountDown</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, lcd.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = LCD_voidCountDown &rArr; LCD_voidSetCursor &rArr; LCD_SendCommand &rArr; GPIO_u8SetPinValue
+<P><STRONG><a name="[96]"></a>LCD_voidCountDown</STRONG> (Thumb, 68 bytes, Stack size 32 bytes, lcd.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = LCD_voidCountDown &rArr; LCD_voidSetCursor &rArr; LCD_SendCommand &rArr; GPIO_u8SetPinValue
 </UL>
-<BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_voidCursorOff
-<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_voidSetCursor
+<BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_voidSetCursor
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_voidClearScreen
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_voidSendString
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_sec
@@ -1301,8 +1296,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[76]"></a>main</STRONG> (Thumb, 734 bytes, Stack size 0 bytes, main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = main &rArr; LCD_voidCountDown &rArr; LCD_voidSetCursor &rArr; LCD_SendCommand &rArr; GPIO_u8SetPinValue
+<P><STRONG><a name="[76]"></a>main</STRONG> (Thumb, 778 bytes, Stack size 0 bytes, main.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = main &rArr; LCD_voidCountDown &rArr; LCD_voidSetCursor &rArr; LCD_SendCommand &rArr; GPIO_u8SetPinValue
 </UL>
 <BR>[Calls]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_voidCountDown
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_voidSetCursor

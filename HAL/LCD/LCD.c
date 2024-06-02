@@ -13,7 +13,7 @@
 
 #include <string.h>
 #include <stdint.h>
-
+#include <stdio.h>
 
 /*
  * Array of characters that stores the string to be printed on the LCD
@@ -200,16 +200,16 @@ void LCD_voidCursorOff()
 void LCD_voidCountDown(u32 del)
 {
 	u8 counter = del+1;
-	u8 str[3];
+	u8 str[16];
 	LCD_voidClearScreen();
 	LCD_voidSetCursor(0,0);
 	LCD_voidSendString("Timer");
-	LCD_voidCursorOff();
+	//LCD_voidCursorOff();
 	while(counter!=0)
 	{
 		counter--;
 		LCD_voidSetCursor(1,0);
-		sprintf(str,"%d          ",counter);
+		sprintf(str,"%d          \0",counter);
 		LCD_voidSendString(str);
 		delay_sec(1);
 		

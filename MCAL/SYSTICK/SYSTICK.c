@@ -27,6 +27,6 @@ void delay_sec(u32 del)
 	u32 i;
 	for(i = 0 ; i < del ; i++)
 	{
-			Systick_Wait(0xFFFFFF);
+			delay(1000);
 	}
 }

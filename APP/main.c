@@ -10,7 +10,8 @@
 #include <stdlib.h>
 
 u8 kpd_input;
-
+u8 kpd_time[4];
+u8 i,j;
 int main()
 {
 	u8 reading;
@@ -61,6 +62,7 @@ int main()
 				{
 					kpd_input = 0xFF;
 					LCD_voidClearScreen();
+					LCD_voidSetCursor(0,0);
 					LCD_voidSendString("Beef Weight?");
 					LCD_voidSetCursor(1,0);
 					while(kpd_input==0xFF)
@@ -68,12 +70,12 @@ int main()
 					if(!(kpd_input>='0' && kpd_input<='9'))
 					{
 						LCD_voidClearScreen();
-						LCD_voidSetCursor(0,4);
+						LCD_voidSetCursor(0,0);
 						LCD_voidSendString("Error!");
 						delay_sec(2);
 					}
 				}while(!(kpd_input>='0' && kpd_input<='9'));
-				LCD_voidSendString("  ");
+				LCD_voidSetCursor(1,0);
 				LCD_voidSendData(kpd_input);
 				delay_sec(5);
 				LCD_voidCountDown(30*(kpd_input&0x0F));
@@ -111,29 +113,30 @@ int main()
 				LCD_voidSendString("Cooking Time");
 				LCD_voidSetCursor(1,5);
 				LCD_voidSendString("00:00");
-				while(kpd_input == 0xFF)
-					kpd_input = KEYPAD_READ();
-				LCD_voidSetCursor(1,9);
-				LCD_voidSendData(kpd_input);
-				
-				kpd_input = 0xFF;
-				while(kpd_input == 0xFF)
-					kpd_input = KEYPAD_READ();
-				LCD_voidSetCursor(1,8);
-				LCD_voidSendData(kpd_input);
-				
-				kpd_input = 0xFF;
-				while(kpd_input == 0xFF)
-					kpd_input = KEYPAD_READ();
-				LCD_voidSetCursor(1,6);
-				LCD_voidSendData(kpd_input);
-				
-				kpd_input = 0xFF;				
+			
+				for( i = 0 ; i < 4 ; i++)
+				{
+					kpd_input = 0xFF;
+					while(kpd_input == 0xFF)
+						kpd_input = KEYPAD_READ();
+					kpd_time[i] = kpd_input;
+					if(i>1)
+							LCD_voidSetCursor(1,8-i);
+					else
+						LCD_voidSetCursor(1,9-i);
+					for( j = 0 ; j <= i ; j++)
+					{
+						LCD_voidSendData(kpd_time[j]);
+						if((j==1&& i==3)||(j==0 && i==2)) LCD_voidSendData(':');
+					}
+				}
+				delay_sec(10);
+				/*kpd_input = 0xFF;				
 				while(kpd_input == 0xFF)
 					kpd_input = KEYPAD_READ();
 				LCD_voidSetCursor(1,5);
 				LCD_voidSendData(kpd_input);
-				break;
+				break;*/
 		}
 	}
 
